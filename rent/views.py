@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from .models import Bike, Rent
 from django.contrib.auth.decorators import login_required
+from django.core.paginator import Paginator
 
 def home(request):
     return render(request, 'home.html')
@@ -8,7 +9,15 @@ def home(request):
 
 def bikes(request):
     bks = Bike.objects.all()
-    return render(request, 'bikes.html', {'bks':bks})
+    page = request.GET.get('page', 1)
+    paginator = Paginator(bks, 9)
+    try:
+        pageno = paginator.page(page)
+    except EmptyPage:
+        pageno = paginator.page(paginator.num_pages)
+    except:
+        pageno = paginator.page(1)
+    return render(request, 'bikes.html', {'bks':pageno})
 
 
 @login_required(login_url='/accounts/login/')

@@ -7,25 +7,50 @@
         <div class="section-title">
             <h2>Available Bikes</h2>
         </div>
-        
-            <div class="row">
 
-                {% for bike in bks %}
-                <div class="col">
-                    <div class="card" style="width: 22rem; margin-bottom:50px">
-                        <img class="card-img-top" src="{{bike.img.url}}" height="240px" width="210px"
-                            alt="{{bike.name}} Image">
-                        <div class="card-body">
-                            <h5 class="card-title">{{bike.name}}</h5>
-                            <p class="card-text">Rs. {{bike.price}}/- per hour</p>
-                            <a href="{% url 'book' bike.id %}" class="btn btn-primary">Book Now</a>
-                        </div>
+        <div class="row">
+
+            {% for bike in bks %}
+            <div class="col">
+                <div class="card" style="width: 22rem; margin-bottom:50px">
+                    <img class="card-img-top" src="{{bike.img.url}}" height="240px" width="210px"
+                        alt="{{bike.name}} Image">
+                    <div class="card-body">
+                        <h5 class="card-title">{{bike.name}}</h5>
+                        <p class="card-text">Rs. {{bike.price}}/- per hour</p>
+                        <a href="{% url 'book' bike.id %}" class="btn btn-primary">Book Now</a>
                     </div>
                 </div>
-                {% endfor %}
             </div>
-      
+            {% endfor %}
+        </div>
+
     </div>
-    
+    {% if bks.has_other_pages %}
+    <ul class="pagination justify-content-center">
+        {% if bks.has_previous %}
+        <li class="page-item"><a class="page-link" aria-label="Previous"
+                href="?page={{ bks.previous_page_number }}"><span aria-hidden="true">&laquo;</span><span
+                    class="sr-only"></span></a></li>
+        {% else %}
+        <li class="page-item disabled"><a class="page-link" href="#"><span>&laquo;</span></a></li>
+        {% endif %}
+        {% for i in bks.paginator.page_range %}
+        {% if bks.number == i %}
+        <li class="page-item active"><a class="page-link" href="#"><span>{{ i }} <span class="sr-only"></span></span></a></li>
+        {% else %}
+        <li class="page-item"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+        {% endif %}
+        {% endfor %}
+        {% if bks.has_next %}
+        <li class="page-item"><a class="page-link" href="?page={{ bks.next_page_number }}" aria-label="Next"><span
+                    aria-hidden="true">&raquo;</span>
+                <span class="sr-only"></span></a></li>
+        {% else %}
+        <li class="page-item disabled"><a class="page-link" href="#"><span>&raquo;</span></a></li>
+        {% endif %}
+    </ul>
+    {% endif %}
 </section>
+
 {% endblock %}

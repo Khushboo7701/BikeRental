@@ -7,7 +7,7 @@ class Bike(models.Model):
     name = models.CharField(max_length=100)
     img = models.ImageField(upload_to='pics')
     price = models.IntegerField()
-
+    
 class Rent(models.Model):
     uname = models.ForeignKey(User, on_delete=CASCADE)
     location=models.CharField(max_length=100)
