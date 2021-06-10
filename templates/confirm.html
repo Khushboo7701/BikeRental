@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<section id="pricing" class="pricing">
+    <div class="container" style="margin-top: 50px;">
+        <div class="section-title">
+            <h2>Booking Details</h2>
+            <h2>{{user.first_name}}, You have successfully booked {{bike.name}}</h2>
+        </div>
+        <div class="row">
+            <div class="col-4">
+                <div class="card" style="width: 32rem; margin-bottom:50px;">
+
+                        <img class="card-img-top" src="{{rent_list.bike.img.url}}" height="280px" width="210px"
+                            alt="{{rent_list.bike.name}} Image">
+                        <div class="card-body" style="background:rgb(133, 199, 133);">
+                            <h5 class="card-title">{{rent_list.bike.name}}</h5>
+                            <p class="card-text"><b>Rs. {{rent_list.bike.price}}/- per hour</b></p>
+                        </div>
+                    </div>
+                    <!-- <h5 class="card-title">{{obj.name}}</h5> -->
+
+                </div>
+            </div>
+
+
+            <div class="col-8">
+                <div style="margin-left: 300px;">
+
+
+                    <table caption="Bike Details:">
+
+                        <tr>
+                            <td>Bike Name: </td>
+                            <td>{{rent_list.bike.name}}</td>
+                        </tr>
+
+                        <tr>
+                            <td>Start Date: </td>
+                            <td>{{rent_list.starttime}}</td>
+                        </tr>
+                        <tr>
+                            <td>End Date: </td>
+                            <td>{{rent_list.endtime}}</td>
+                        </tr>
+                        <tr>
+                            <td>Location: </td>
+                            <td>{{rent_list.location}}</td>
+                        </tr>
+                        <tr>
+                            <td>Total Hours: </td>
+                            <td>{{rent_list.hours}}</td>
+                        </tr>
+                        <tr>
+                            <td>Total Amount: </td>
+                            <td>{{rent_list.amount}}</td>
+                        </tr>
+                    </table>
+                    <a class="btn-get-started animate__animated animate__fadeInUp" href="{% url 'history' %}">View
+                        Rental
+                        History</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

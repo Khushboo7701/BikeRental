@@ -1,0 +1,49 @@
+{% extends 'base.html' %} 
+{% load static %}
+{% block content %}
+<!-- Signup Font Icon -->
+<link rel="stylesheet" href="{% static 'assets/fonts/material-icon/css/material-design-iconic-font.min.css' %}">
+
+<!-- Signup Main css -->
+<link rel="stylesheet" href="{% static 'assets/css/signup_style.css' %}">
+
+ <!-- Signup JS -->
+ <script src="{% static 'assets/vendor/signup_jquery/jquery.min.js' %}"></script>
+ <script src="{% static 'assets/js/signup_main.js' %}"></script>
+
+<div class="main">
+
+        <section class="signup">
+            <!-- <img src="images/signup-bg.jpg" alt=""> -->
+            <div class="container" style="width: 660px;">
+                <div class="signup-content">
+                    <form method="POST" action="/accounts/login/" id="signup-form" class="signup-form">
+                        {% csrf_token %}
+                        <h2 class="form-title">Login</h2>
+                        <div class="form-group">
+                            <input type="email" class="form-input" name="email" id="email" placeholder="Email Address" required/>
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-input" name="password" id="password" placeholder="Password" required/>
+                            <span toggle="#password" class="zmdi zmdi-eye field-icon toggle-password"></span>
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" name="submit" id="submit" class="form-submit" value="Login"/>
+                        </div>
+                    </form>
+                    <div>
+                        {% for message in messages %}
+                        <h6 style="text-align:center; margin-top:50px"><b>{{message}}<b></h6>
+                        {% endfor %}
+                    </div>
+                    <p class="loginhere">
+                        New User? <a href="/accounts/register" class="loginhere-link">Register here</a>
+                    </p>
+                </div>
+            </div>
+        </section>
+
+    </div>
+{% endblock %}
+
+   
