@@ -2,68 +2,187 @@
 {% load static %}
 {% block content %}
 
+<!-- <link rel="stylesheet" href="{% static 'assets/fonts/material-icon/css/material-design-iconic-font.min.css' %}">
+
+Signup Main css
+<link rel="stylesheet" href="{% static 'assets/css/signup_style.css' %}">
+
+Signup JS
+<script src="{% static 'assets/vendor/signup_jquery/jquery.min.js' %}"></script>
+<script src="{% static 'assets/js/signup_main.js' %}"></script> -->
+
+<!-- Google font -->
+<link href="https://fonts.googleapis.com/css?family=Cabin:400,700" rel="stylesheet">
+
+<!-- Bootstrap -->
+<link type="text/css" rel="stylesheet" href="{% static 'static/assets/css/bootstrap.min.css' %}" />
+
+<!-- Custom stlylesheet -->
+<link type="text/css" rel="stylesheet" href="{% static 'static/assets/css/booking_style.css' %}" />
+
 <section id="about" class="about">
     <div class="container" style="margin-top: 50px;">
         <div class="section-title">
             <h2>Rental Plan</h2>
         </div>
-        <div section="about" class="about">
-            {% for obj in obj_list %}
-                <div class="row">
-                    <div class="col">
-                    <div class="card" style="width: 32rem; margin-bottom:50px;">
-                        <div class="card-body">
-                            <div class="card" style="width: 30rem; margin-bottom:50px">
-                                <img class="card-img-top" src="{{obj.img.url}}" height="280px" width="210px"
-                                    alt="{{obj.name}} Image">
-                                <div class="card-body" style="background:rgb(133, 199, 133);">
-                                    <h5 class="card-title">{{obj.name}}</h5>
-                                    <p class="card-text"><b>Rs. {{obj.price}}/- per hour</b></p>
-                                </div>
+        <!-- <div section="about" class="about"> -->
+        <div class="row">
+            <div class="col-4">
+                <div class="card" style="width: 32rem; margin-bottom:50px;">
+                    <div class="card-body">
+                        <div class="card" style="width: 30rem; margin-bottom:50px">
+                            <img class="card-img-top" src="{{obj.img.url}}" height="280px" width="210px"
+                                alt="{{obj.name}} Image">
+                            <div class="card-body" style="background:rgb(133, 199, 133);">
+                                <h5 class="card-title">{{obj.name}}</h5>
+                                <p class="card-text"><b>Rs. {{obj.price}}/- per hour</b></p>
                             </div>
-                            <!-- <h5 class="card-title">{{obj.name}}</h5> -->
-                            <p class="card-text">
-                            <div class="services">
-                                <div class="row">
-                                    <div class="col-sm-4 col-sm-4 icon-box">
-                                        <div class="icon"><img src="{% static 'assets/img/features/deposit.png' %}"
-                                                height="50px" width="50px" alt="feature1"></i></div>
-                                        <h5 class="title">Refundable Deposit</h5><small>Rs. {{obj.price}}/- per hour</small>
-                                    </div>
-                                    <div class="col-sm-4 col-sm-4 icon-box">
-                                        <div class="icon"><img src="{% static 'assets/img/features/distance.png' %}"
-                                                height="50px" width="50px" alt="feature2"></div>
-                                        <h5 class="title">Distance <br>Limit</h5><small>40 Kms/Hour</small>
-                                    </div>
-                                    <div class="col-sm-4 col-sm-4 icon-box">
-                                        <div class="icon"><img src="{% static 'assets/img/features/excess.png' %}" height="50px"
-                                                width="50px" alt="feature3"></div>
-                                        <h5 class="title">Excess Distance charge</h5><small>Rs. 3/Km</small>
-                                    </div>
-                                    <div class="col-sm-4 col-sm-4 icon-box">
-                                        <div class="icon"><img src="{% static 'assets/img/features/penalty.png' %}"
-                                                height="50px" width="50px" alt="feature4"></div>
-                                        <h5 class="title">Late Penalty</h5><small>Rs. 100/Hour</small>
-                                    </div>
-                                    <div class="col-sm-4 col-sm-4 icon-box">
-                                        <div class="icon"><img src="{% static 'assets/img/features/speed.png' %}"
-                                                height="50px" width="50px" alt="feature5"></div>
-                                        <h5 class="title">Maximum Speed</h5><small>80 Km/hour</small>
-                                    </div>
-                                    <div class="col-sm-4 col-sm-4 icon-box">
-                                        <div class="icon"><img src="{% static 'assets/img/features/timings.png' %}" height="50px"
-                                                width="50px" alt="feature6"></div>
-                                        <h5 class="title">Pickup Timings</h5><small>7:00-23:00</small>
-                                    </div>
+                        </div>
+                        <!-- <h5 class="card-title">{{obj.name}}</h5> -->
+                        <p class="card-text">
+                        <div class="services">
+                            <div class="row">
+                                <div class="col-sm-4 col-sm-4 icon-box">
+                                    <div class="icon"><img src="{% static 'assets/img/features/deposit.png' %}"
+                                            height="50px" width="50px" alt="feature1"></i></div>
+                                    <h5 class="title">Refundable Deposit</h5><small>Rs. {{obj.price}}/- per hour</small>
+                                </div>
+                                <div class="col-sm-4 col-sm-4 icon-box">
+                                    <div class="icon"><img src="{% static 'assets/img/features/distance.png' %}"
+                                            height="50px" width="50px" alt="feature2"></div>
+                                    <h5 class="title">Distance <br>Limit</h5><small>40 Kms/Hour</small>
+                                </div>
+                                <div class="col-sm-4 col-sm-4 icon-box">
+                                    <div class="icon"><img src="{% static 'assets/img/features/excess.png' %}"
+                                            height="50px" width="50px" alt="feature3"></div>
+                                    <h5 class="title">Excess Distance charge</h5><small>Rs. 3/Km</small>
+                                </div>
+                                <div class="col-sm-4 col-sm-4 icon-box">
+                                    <div class="icon"><img src="{% static 'assets/img/features/penalty.png' %}"
+                                            height="50px" width="50px" alt="feature4"></div>
+                                    <h5 class="title">Late Penalty</h5><small>Rs. 100/Hour</small>
+                                </div>
+                                <div class="col-sm-4 col-sm-4 icon-box">
+                                    <div class="icon"><img src="{% static 'assets/img/features/speed.png' %}"
+                                            height="50px" width="50px" alt="feature5"></div>
+                                    <h5 class="title">Maximum Speed</h5><small>80 Km/hour</small>
+                                </div>
+                                <div class="col-sm-4 col-sm-4 icon-box">
+                                    <div class="icon"><img src="{% static 'assets/img/features/timings.png' %}"
+                                            height="50px" width="50px" alt="feature6"></div>
+                                    <h5 class="title">Pickup Timings</h5><small>7:00-23:00</small>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                {% endfor %}
+            </div>
+
+            <div class="col-8">
+                <div style="margin-left: 300px;">
+
+                    <div class="booking-form">
+
+                        <form method="POST" action="{% url 'book' slug_text=obj.slug %}" id="signup-form"
+                            class="signup-form">
+                            {% csrf_token %}
+                            <div class="form-header">
+                                <h2>Make your reservation</h2>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="start_time">Start Time</label>
+                                        <input type="datetime-local" class="form-input" name="start_time"
+                                            id="start_time" onclick="calculate();" onchange="calculate();" required />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="end_time">End Time</label>
+                                        <input type="datetime-local" class="form-input" onclick="calculate();"
+                                            onchange="calculate();" name="end_time" id="end_time" required />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label for="location">Location</label>
+                                    <input list="loc" name="location" id="location" required>
+                                    <datalist id="loc">
+                                        <option value="Delhi">
+                                        <option value="Mumbai">
+                                        <option value="Bangalore">
+                                        <option value="Ghaziabad">
+                                        <option value="Noida">
+                                        <option value="Meerut">
+                                        <option value="Kanpur">
+                                        <option value="Lucknow">
+                                        <option value="Pune">
+                                        <option value="Goa">
+                                    </datalist>
+                                    <div class="form-group">
+                                        <label for="hours">Total Hours</label>
+                                        <input type="number" name="hours" id="hours" class="form-submit"
+                                            placeholder="hours" readonly />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="amount">Total Amount</label>
+                                <input type="number" name="amount" id="amount" class="form-submit" placeholder="amount"
+                                    readonly />
+                            </div>
+
+                            <div class="form-group">
+                                <input type="submit" name="submit" id="submit" onclick="checking();" value="Rent"
+                                    class="form-submit" />
+                            </div>
+
+                            <div>
+                                <h6 id="msg" style="color:crimson;"><b><b></h6>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
             </div>
 
         </div>
-    </div>  
+    </div>
+    <!-- </div>   -->
 </section>
+<script>
+    function calculate() {
+        var d1 = document.getElementById("start_time")
+        var d2 = document.getElementById("end_time")
+        var do1 = new Date(d1.value);
+        var do2 = new Date(d2.value);
+        var test = Math.round(do2 - do1);
+        var t = test.valueOf();
+        console.log("time " + t)
+        if (t <= 0) {
+            document.getElementById("msg").innerHTML = "End date must be greater than start date!";
+            document.getElementById("end_time").value = ""
+            document.getElementById("end_time").focus()
+        }
+        else {
+            document.getElementById("msg").innerHTML = "";
+            var totalHours = t / (1000 * 60 * 60);
+            totalHours = parseFloat(totalHours.toFixed(1))
+            document.getElementById("hours").value = totalHours;
+            document.getElementById("amount").value = Math.round(totalHours * "{{obj.price}}");
+            var fp = document.getElementById("amount")
+            console.log(fp);
+        }
+    }
+    function checking() {
+        if ((document.getElementById("hours").value.equals("")) || (document.getElementById("amount").equals(""))) {
+            document.getElementById("msg").innerHTML = "Enter correct start and end time";
+        }
+    }
+</script>
 {% endblock %}

@@ -2,7 +2,7 @@ from django.contrib import admin
 from .models import Bike, Rent
 
 class BikeAdmin(admin.ModelAdmin):
-    list_display = ('id', 'name', 'price')
+    list_display = ('id', 'name', 'price','slug')
 
 
 class RentAdmin(admin.ModelAdmin):
