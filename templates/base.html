@@ -46,21 +46,15 @@
           <li><a class="nav-link scrollto" href="/#services">Services</a></li>
           <li><a class="nav-link scrollto" href="/#faq">FAQs</a></li>
           <li><a class="nav-link scrollto" href="/#contact">Contact</a></li>
-          <li><a href="/bikes/">Book a Ride</a></li>
+          <li><a href="{% url 'bikes' %}">Book a Ride</a></li>
           {% if user.is_authenticated %}
-          <li><a href="/history/">My Rental History</a></li>
-          <li><a class="logo">Hello, {{user.first_name}}</a></li>
-          <li><a class="getstarted" href="/accounts/logout/">Logout</a></li>
+          <li><a href="{% url 'history' %}">My Rental History</a></li>
+          <li><a class="nav-link">Hello, {{user.first_name}}</a></li>
+          <li><a class="getstarted" href="{% url 'logout' %}">Logout</a></li>
           {% else %}
-          <li><a href="/accounts/login/">Login</a></li>
+          <li><a href="{% url 'login' %}">Login</a></li>
           <li><a class="getstarted" href="{% url 'register' %}">Sign Up</a></li>
           {% endif %}
-          <!-- <form class="form-inline">
-            <li><input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"></li>
-            <li><button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button></li>
-          </form>
-          <li><i class="bi bi-list mobile-nav-toggle"></i></li>
-          </li> -->
         </ul>
       </nav><!-- .navbar -->
 
@@ -133,7 +127,7 @@
         &copy; Copyright <strong><span>RentIt</span></strong>. All Rights Reserved
       </div>
       <div class="credits">
-       <a>Designed by Team RentIt</a>
+        <a>Designed by Team RentIt</a>
       </div>
     </div>
   </footer><!-- End Footer -->

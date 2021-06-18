@@ -72,6 +72,8 @@ TEMPLATES = [
     },
 ]
 
+AUTH_USER_MODEL = 'accounts.Account'
+
 WSGI_APPLICATION = 'BikeRenting.wsgi.application'
 
 
@@ -80,8 +82,12 @@ WSGI_APPLICATION = 'BikeRenting.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'rentitdb2',
+        'USER': 'root',
+        'PASSWORD':'8179',
+        'HOST':'localhost',
+        'PORT':'3306'
     }
 }
 

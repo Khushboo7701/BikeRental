@@ -7,5 +7,6 @@ urlpatterns = [
     path('book/<slug:slug_text>/', views.book, name='book'),
     path('history/', views.history, name='history'),
     path('book/confirm/<slug:slug_text>/', views.confirm, name='confirm'),
+    path('search/', views.search, name='search')
     ]
 
