@@ -45,6 +45,8 @@ def register(request):
             messages.info(request, 'Password not matching')
             return redirect('/accounts/register')
     else:
+        if Account.is_authenticated:
+            auth.logout(request)
         return render(request, 'register.html')
 
 
@@ -58,7 +60,7 @@ def login(request):
             profile = Profile.objects.filter(user=user1).first()
             if profile:
                 if not profile.is_verified:
-                    messages.info(request,'Kindly check your email to verify your account')
+                    messages.info(request,'Account already registered.\nKindly check your email to verify your account')
                     auth_token1 = str(uuid.uuid4())
                     send_mail_after_reg(email, auth_token1)
                     return redirect('/accounts/login')
@@ -86,7 +88,7 @@ def success(request):
 
 def send_mail_after_reg(email, token):
     subject = 'Verify your RentIt account'
-    message = f'Please click the link to verify your account https://127.0.0.1:8000/accounts/verify/{token}'
+    message = f'Please click the link to verify your account http://127.0.0.1:8000/accounts/verify/{token}'
     email_from = settings.EMAIL_HOST_USER
     recipient_list = [email]
     mail1 = EmailMessage(subject, message, email_from, recipient_list)
@@ -96,17 +98,16 @@ def send_mail_after_reg(email, token):
 
 def verify(request,token):
     profile_obj = Profile.objects.filter(auth_token = token).first()
+    print(profile_obj)
     if profile_obj:
         if profile_obj.is_verified:
-            messages.info('Your account has been verified.')
-            return redirect('/accounts/login')
+            messages.info(request, 'Your account is already verified.')
+            return redirect('login')
         
         profile_obj.is_verified = True
         fname = profile_obj.user.first_name
         profile_obj.save()
-        messages.info(request,'Your account has been successfully verified')
         text = f'Hey {fname}! Your account has been successfully verified!'
-
         email2 = EmailMessage(
             "Verification Succesful",
             text,
@@ -114,8 +115,8 @@ def verify(request,token):
             [profile_obj.user.email],
         )
         email2.send(fail_silently=False)
-        return redirect('/accounts/login')
+        return redirect('/accounts/success')
     else:
-        messages.info(request, 'Verification successful')
-        return redirect('/accounts/register')
+        messages.info(request, 'Verification unsuccessful')
+        return redirect('/accounts/login')
   

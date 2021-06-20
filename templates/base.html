@@ -41,7 +41,7 @@
         <ul>
           <li><a href="{% url 'home' %}" class="logo"><img src="{% static 'assets/img/logo_white.png' %}"
                 alt="RentIt Logo" class="img-fluid"></a></li>
-          <li><a class="nav-link scrollto active" href="/#home">Home</a></li>
+          <li><a class="nav-link scrollto" href="/#home">Home</a></li>
           <li><a class="nav-link scrollto" href="/#about">About</a></li>
           <li><a class="nav-link scrollto" href="/#services">Services</a></li>
           <li><a class="nav-link scrollto" href="/#faq">FAQs</a></li>
@@ -112,7 +112,8 @@
             <h4>Subscribe for latest updates</h4>
             <p>We're expanding in various metropolitan cities. Subscribe to us to get connected and receive latest
               updates about new bikes at low prices.</p>
-            <form action="" method="post">
+            <form action="#" method="post">
+              {% csrf_token %}
               <input type="email" name="email"><input type="submit" value="Subscribe">
             </form>
 

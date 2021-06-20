@@ -14,9 +14,9 @@
         {% endfor %}
 
         {% else %}
-        {% for bike in bikes %}
         <div class="row">
-            <div class="col">
+            {% for bike in bikes %}
+            <div class="col-4">
                 <div class="card" style="width: 22rem; margin-bottom:50px">
                     <img class="card-img-top" src="{{bike.img.url}}" height="240px" width="210px"
                         alt="{{bike.name}} Image">
@@ -27,11 +27,12 @@
                     </div>
                 </div>
             </div>
+            {% endfor %}
+            {% endif %}
+            <h6><a href="{% url 'bikes' %}" class="btn btn-primary">View More Bikes</a>
+            </h6>
         </div>
-        {% endfor %}
-        {% endif %}
-        <h6><a` href="{% url 'bikes' %}" class="btn btn-primary">View More Bikes</a>
-        </h6>
+
     </div>
 
 </section>
