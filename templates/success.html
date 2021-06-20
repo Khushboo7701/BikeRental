@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+
+<!-- ======= Home Section ======= -->
+<section id="home">
+    <div class="home-container">
+        <div id="homeCarousel" data-bs-interval="5000" data-bs-ride="carousel">
+
+            <ol id="home-carousel-indicators"></ol>
+
+            <div role="listbox">
+
+                <!-- Slide 1 -->
+                <div class="carousel-item active" style="background: url({% static 'assets/img/bike3.jpg' %});">
+                    <div class="carousel-container">
+                        <div class="carousel-content">
+                            <h2 class="animate__animated animate__fadeInDown">Email Successfully verified</h2>
+                            <p class="animate__animated animate__fadeInUp"></p>
+                            <div>
+                                <a href="{% url 'login' %}"
+                                    class="btn-get-started animate__animated animate__fadeInUp scrollto">Login</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    </div>
+</section><!-- End Home -->
+
+
+{% endblock %}

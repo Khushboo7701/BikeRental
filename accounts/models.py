@@ -1,6 +1,7 @@
 from django.db import models
 from django.core.validators import RegexValidator
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
+from django.db.models.deletion import CASCADE
 class MyAccountManager(BaseUserManager):
     def create_user(self, email, password=None, **kwargs):
         if not email:
@@ -56,6 +57,15 @@ class Account(AbstractBaseUser):
     # Does this user have permission to view this app? (ALWAYS YES FOR SIMPLICITY)
     def has_module_perms(self, app_label):
         return True
+
+class Profile(models.Model):
+    user= models.OneToOneField(Account, on_delete=CASCADE) 
+    auth_token = models.CharField(max_length=100)
+    is_verified = models.BooleanField(default=False)
+    created_at =models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.user.email
 
 
 

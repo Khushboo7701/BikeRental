@@ -13,6 +13,9 @@ class Bike(models.Model):
     img = models.ImageField(null=True, upload_to='pics')
     price = models.IntegerField(null=True)
     slug = models.SlugField(null=True, max_length=250, blank=True)
+    
+    def __str__(self):
+        return self.name
 
 class Rent(models.Model):
     uname = models.ForeignKey(User,null=True, on_delete=CASCADE)
@@ -23,7 +26,9 @@ class Rent(models.Model):
     amount=models.IntegerField(null=True)
     bike=models.ForeignKey(Bike, null=True, on_delete=CASCADE)
     slug = models.SlugField(null=True, max_length=250, blank=True)
-
+    
+    def __str__(self):
+        return self.name
 def bikes_slug_generator(sender, instance, *args, **kwargs):
     if not instance.slug:
         instance.slug = unique_slug_generator(instance, instance.name)
@@ -36,3 +41,5 @@ def rent_slug_generator(sender, instance, *args, **kwargs):
         instance.slug = unique_slug_generator(instance, instance.bike.name)
 
 pre_save.connect(rent_slug_generator, sender=Rent)
+
+

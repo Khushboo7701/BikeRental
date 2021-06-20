@@ -1,5 +1,5 @@
 from django.contrib import admin
-from accounts.models import Account
+from accounts.models import Account, Profile
 from django.contrib.auth.admin import UserAdmin
 
 class AccountAdmin(UserAdmin):
@@ -10,4 +10,9 @@ class AccountAdmin(UserAdmin):
     fieldsets = ()
     ordering = ('email',)
 
+class ProfileAdmin(admin.ModelAdmin):
+    list_display = ('user','is_verified')
+
 admin.site.register(Account, AccountAdmin)
+admin.site.register(Profile,ProfileAdmin)
+
